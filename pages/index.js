@@ -6,6 +6,8 @@ import Button from '../src/components/button/Button'
 import Input from '../src/components/input/Input'
 
 export default function Home() {
+  const [clique, setClique] = useState(0)
+
   const router = useRouter()
 
   const [email, setEmail] = useState('')
@@ -25,6 +27,10 @@ export default function Home() {
     onChange(event.target.value)
   }
 
+  const handleClique = () => {
+    setClique(clique + 1)
+  }
+
   return (
     <>
       <Title onClick={handleClick}>Teste</Title>
@@ -34,9 +40,9 @@ export default function Home() {
         <Input type="password" placeholder="Digite sua senha" onChange={(e) => handleChangeInput(e, setPassword)} />
         <p>O e-mail digitado é: {email} </p>
         <Button type="submit">Botão DENTRO do form</Button>
-      </form>
-      <Button onClick={handleClick}>Botão FORA do form</Button>
-      <label>LABEL TESTE </label>
+      </form><br/>
+      <Button onClick={handleClique}>Botão Clicar</Button>
+      <label>Cliques: {clique} </label><br/>
       <button>button</button>
     </>
   )
