@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 
 import Title from '../src/components/title/Title'
@@ -13,6 +13,8 @@ const StyledDiv = styled.div`
 `
 
 export default function Home() {
+  const [vClique, setVclique] = useState('')
+
   const [numero, setNumero] = useState('')
   const [verificar, setVerificar] = useState('')
 
@@ -49,6 +51,14 @@ export default function Home() {
     }
   }
 
+  useEffect(() => {
+    if (clique % 2 === 0) {
+      setVclique('par')
+    } else {
+      setVclique('ímpar')
+    }
+  }, [clique])
+
   return (
     <>
       <Title onClick={handleClick}>Teste</Title>
@@ -65,6 +75,7 @@ export default function Home() {
         <Input type="number" placeholder="Digite um número" onChange={(event) => setNumero(event.target.value)} />
         <Button onClick={() => handleVerificar()}>Verificar</Button>
         <p>O número é {verificar} </p>
+        <p>O número é {vClique} </p>
       </StyledDiv>  
     </>
   )
