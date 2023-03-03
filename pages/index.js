@@ -1,3 +1,5 @@
+import styled from 'styled-components'
+
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 
@@ -5,7 +7,15 @@ import Title from '../src/components/title/Title'
 import Button from '../src/components/button/Button'
 import Input from '../src/components/input/Input'
 
+const StyledDiv = styled.div`
+  color: blue;
+  padding: 10px;
+`
+
 export default function Home() {
+  const [numero, setNumero] = useState('')
+  const [verificar, setVerificar] = useState('')
+
   const [clique, setClique] = useState(0)
 
   const router = useRouter()
@@ -31,6 +41,14 @@ export default function Home() {
     setClique(clique + 1)
   }
 
+  const handleVerificar = () => {
+    if (numero % 2 === 0) {
+      setVerificar('par')
+    } else {
+      setVerificar('ímpar')
+    }
+  }
+
   return (
     <>
       <Title onClick={handleClick}>Teste</Title>
@@ -43,7 +61,11 @@ export default function Home() {
       </form><br/>
       <Button onClick={handleClique}>Botão Clicar</Button>
       <label>Cliques: {clique} </label><br/>
-      <button>button</button>
+      <StyledDiv>
+        <Input type="number" placeholder="Digite um número" onChange={(event) => setNumero(event.target.value)} />
+        <Button onClick={() => handleVerificar()}>Verificar</Button>
+        <p>O número é {verificar} </p>
+      </StyledDiv>  
     </>
   )
 }
