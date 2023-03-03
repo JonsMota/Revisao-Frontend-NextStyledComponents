@@ -1,10 +1,13 @@
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 
 import Title from '../src/components/title/Title'
 import Button from '../src/components/button/Button'
 import Input from '../src/components/input/Input'
 
 export default function Home() {
+  const router = useRouter()
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -25,7 +28,7 @@ export default function Home() {
   return (
     <>
       <Title onClick={handleClick}>Teste</Title>
-      <label onClick={handleClick}>Voltar a página...</label>
+      <label onClick={() => router.push('/useeffect')}>Voltar a página...</label>
       <form onSubmit={handleSubmitForm}>
         <Input type="text" placeholder="Digite seu e-mail" onChange={(e) => handleChangeInput(e, setEmail)} />
         <Input type="password" placeholder="Digite sua senha" onChange={(e) => handleChangeInput(e, setPassword)} />

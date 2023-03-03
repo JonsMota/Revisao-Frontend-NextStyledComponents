@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 
 import Input from '../src/components/input/Input'
 
@@ -18,6 +19,11 @@ export default function useEffectPage() {
     }
     
     fetchData()
+
+    return function saveData() {
+      console.log('Save data')
+    }
+
   }, [])
 
   useEffect(() => {
@@ -49,6 +55,9 @@ export default function useEffectPage() {
           onChange={() => setName(event.target.value)}
         />
       </form>
+      <div>
+        <Link href="/">Salvar tudo</Link>
+      </div>
     </div>
   )
 }
