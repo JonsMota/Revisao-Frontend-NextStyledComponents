@@ -3,16 +3,25 @@ import Button from '../src/components/button/Button'
 import Input from '../src/components/input/Input'
 
 export default function Home() {
+  const handleClick = () => {
+    console.log('Handle Click')
+  }
+
+  const handleSubmitForm = (event) => {
+    event.preventDefault()
+    console.log('Handle Submit Form')
+  }
+
   return (
     <>
-      <Title>Teste</Title>
-      <label>Voltar a página...</label>
-      <form>
+      <Title onClick={handleClick}>Teste</Title>
+      <label onClick={handleClick}>Voltar a página...</label>
+      <form onSubmit={handleSubmitForm}>
         <Input type="text" placeholder="Digite seu e-mail" />
         <Input type="password" placeholder="Digite sua senha" />
-        <Button>Botão</Button>
+        <Button type="submit">Botão DENTRO do form</Button>
       </form>
-      <Button>Botão</Button>
+      <Button onClick={handleClick}>Botão FORA do form</Button>
       <label>LABEL TESTE </label>
       <button>button</button>
     </>

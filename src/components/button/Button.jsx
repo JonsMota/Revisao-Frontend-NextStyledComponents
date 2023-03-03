@@ -23,7 +23,6 @@ const ButtonContainer = styled.div`
 export default function Button(props) {
   return (
     <ButtonContainer>
-      <label>Button Label</label>
       <button {...props}></button>
     </ButtonContainer>
   )  
