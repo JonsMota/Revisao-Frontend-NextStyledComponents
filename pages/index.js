@@ -18,12 +18,8 @@ export default function Home() {
     console.log({ email, password })
   }
 
-  const handleChangeInput = (event) => {
-    setEmail(event.target.value)
-  }
-
-  const handleChangeInputPassword = (event) => {
-    setPassword(event.target.value)
+  const handleChangeInput = (event, onChange) => {
+    onChange(event.target.value)
   }
 
   return (
@@ -31,8 +27,8 @@ export default function Home() {
       <Title onClick={handleClick}>Teste</Title>
       <label onClick={handleClick}>Voltar a página...</label>
       <form onSubmit={handleSubmitForm}>
-        <Input type="text" placeholder="Digite seu e-mail" onChange={handleChangeInput} />
-        <Input type="password" placeholder="Digite sua senha" onChange={handleChangeInputPassword} />
+        <Input type="text" placeholder="Digite seu e-mail" onChange={(e) => handleChangeInput(e, setEmail)} />
+        <Input type="password" placeholder="Digite sua senha" onChange={(e) => handleChangeInput(e, setPassword)} />
         <p>O e-mail digitado é: {email} </p>
         <Button type="submit">Botão DENTRO do form</Button>
       </form>
