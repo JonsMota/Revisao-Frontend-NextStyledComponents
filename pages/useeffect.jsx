@@ -16,6 +16,11 @@ export default function useEffectPage() {
     
     fetchData()
   }, [])
+
+  useEffect(() => {
+    console.log('Lista modificada')
+  }, ['Lista modficada'])
+
   return (
     <div>
       {userList.map((user, key) => (
