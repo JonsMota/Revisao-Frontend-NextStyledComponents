@@ -30,6 +30,18 @@ export default function useEffectPage() {
     console.log('Lista modificada')
   }, ['Lista modficada'])
 
+  useEffect (() => {
+    const wheelListener = () => {
+      console.log('wheel listener')
+    }
+
+    addEventListener('wheel', wheelListener)
+
+    return () => {
+      removeEventListener('wheel', wheelListener)
+    }
+  }, [])
+
   const handleForm = (event) => {
     event.preventDefault()
     setUserList([
